@@ -6,7 +6,7 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:19:31 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/09 08:57:38 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:44:00 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,24 +66,6 @@ t_stack	*ft_last_in_list(t_stack *list)
 t_stack	*ft_2nlast_in_list(t_stack *list)
 {
 	while (list->next->next != NULL)
-	{
-		list = list->next;
-	}
-	return (list);
-}
-
-t_stack	*ft_go_to_in_list(t_stack *list, int pos)
-{
-	while (list->actual_pos != pos)
-	{
-		list = list -> next;
-	}
-	return (list);
-}
-
-t_stack	*ft_nlast_in_list(t_stack *list)
-{
-	while (list->next->next->next != NULL)
 	{
 		list = list->next;
 	}

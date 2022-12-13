@@ -6,7 +6,7 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:54:38 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/12 18:31:43 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/13 19:00:20 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,40 @@ typedef struct s_count
 
 typedef struct s_pos
 {
-	int	pos;
-	int	amount_of_adjacent_together;
-	int	stack_size;
-	int	stack_middle;
-	int	max_index;
-	int	max_stack_size;
-	int	send_to_b_pos;
-	int	best_in_b;
-	int	send_is_closer_last;
-	int	best_in_b_closer_last;
-	int	diff_adjacent;
-	int	cmp;
+	int		pos;
+	int		amount_of_adjacent_together;
+	int		stack_size;
+	int		stack_middle;
+	int		max_index;
+	int		max_stack_size;
+	int		send_to_b_pos;
+	int		best_in_b;
+	int		send_is_closer_last;
+	int		best_in_b_closer_last;
+	int		cmp;
+	int		i;
+	int		*array;
+	char	**each_value;
+	int		least_diff;
+	int		diff;
+	int		pos2;
+	int		neg_flag;
+	t_stack	*tmp;
 }	t_pos;
+
+typedef struct s_best
+{
+	int		i;
+	int		last;
+	int		last_a;
+	int		new;
+	int		new_close;
+	int		i_close;
+	int		cmp;
+	int		cmp_new;
+	int		new_rev_close;
+	int		i_rev_close;
+}	t_best;
 
 /*sorting algorithms*/
 
@@ -65,15 +86,21 @@ void	ft_merge_sort(int *array, int left_index, int right_index);
 
 /*sort stack with commands*/
 
-/*It works correctly but not great efficiency*/
 void	sort_list_3(t_stack **head);
 void	sort_list_3_inverse(t_stack **head);
-void	sort_list_general(t_stack	**head_a, t_stack **head_b, t_pos moves);
-void	sort_list_general_1(t_stack	**head_a, t_stack **head_b, t_pos moves);
 void	sort_list_general_2(t_stack	**head_a, t_stack **head_b, t_pos moves);
-void	sort_list_general_3(t_stack	**head_a, t_stack **head_b, t_pos moves);
 void	sort_list_5(t_stack	**head_a, t_stack **head_b, t_pos moves);
-int		only_adjacent_to_head_b(t_stack *head_a, t_stack *head_b, t_pos moves);
+void	ft_send_higher_to_lower(t_stack **head_a,
+			t_stack **head_b, t_pos *moves);
+
+/*check and create strings*/
+
+int		ft_list_duplicates(t_stack *list);
+int		ft_checks1(char *str);
+int		ft_clean_and_create_stack_from_nargs(int argc,
+			char **argv, t_pos *moves, t_stack **stack_a);
+int		ft_clean_and_create_stack_from_string(char **argv, t_pos *moves,
+			t_stack **stack_a);
 
 /*list utils*/
 
@@ -120,32 +147,20 @@ void	ft_rrr(t_stack **head_a, t_stack **head_b);
 /*add actual_position and discover index - pos info && order*/
 
 void	search_add_index_list(t_stack **head, int cmp, int index);
-t_pos	allocate_index(t_stack **head, int	*array, int amount);
+t_pos	allocate_index(t_stack **head, t_pos moves, int amount);
 int		ft_check_ordered(t_stack **head);
 int		ft_find_biggest(t_stack *list);
 int		ft_find_lowest(t_stack *list);
-int		adjacent_to_head_b(t_stack *head_a, t_stack *head_b, t_pos moves);
-int		send_to_head_b(t_stack *head_a, t_stack *head_b, t_pos moves);
-int		send_to_head_b_changes(t_stack *head_a, t_stack *head_b, t_pos moves);
-int		send_to_head_b_nchanges(t_stack *head_a, t_stack *head_b, t_pos moves, int n);
-int		send_to_head_b_relnchanges(t_stack *head_a, t_stack *head_b, t_pos moves, int n);
+int		adjacent_to_head_b(t_stack *head_a, t_stack *head_b, t_pos *moves);
 int		ft_last_in_list_pos(t_stack *list);
-int		ft_2nlast_in_list_pos(t_stack *list);
 t_pos	ft_index_adjacent_info(t_stack *head);
-int		ft_find_lowest_5poses(t_stack *list);
-int		ft_find_lowest_5poses_changes(t_stack *list);
-int		ft_find_lowest_nposes_changes(t_stack *list, int n);
-int		ft_find_lowest_relnposes_changes(t_stack *list, int n);
-t_pos	ft_best_solution(t_stack *head_a, t_stack *head_b, t_pos moves, int n);
-t_pos	ft_best_solution_back(t_stack *head_a, t_stack *head_b, t_pos moves);
-t_pos	ft_find_lowest_relncmp(t_stack *list, t_pos moves, int n);
-t_pos	send_to_head_b_relncmp(t_stack *head_a, t_stack *head_b, t_pos moves, int n);
+void	ft_best_solution_back(t_stack *head_a, t_stack *head_b, t_pos *moves);
 
 /*more utils*/
 
+/*init struct*/
+void	ft_init_moves(t_pos *moves);
 /*print int array*/
 void	ft_print_int_array(int *array, int amount);
-int		ft_list_duplicates(t_stack *list);
-t_stack	*ft_go_to_in_list(t_stack *list, int pos);
 
 #endif

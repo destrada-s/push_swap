@@ -6,7 +6,7 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:52:42 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/08 19:11:19 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/13 09:31:18 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,24 +56,6 @@ int	ft_find_lowest(t_stack *list)
 			lowest = list;
 		list = list->next;
 	}
-	return (lowest->actual_pos);
-}
-
-int	ft_find_lowest_5poses(t_stack *list)
-{
-	t_stack	*lowest;
-
-	lowest = list;
-	while (list -> actual_pos < 3)
-	{
-		if (lowest->index > list->index)
-			lowest = list;
-		list = list->next;
-	}
-	if (lowest->index > ft_2nlast_in_list(list)->index)
-		lowest = ft_2nlast_in_list(list);
-	if (lowest->index > ft_last_in_list(list)->index)
-		lowest = ft_last_in_list(list);
 	return (lowest->actual_pos);
 }
 
