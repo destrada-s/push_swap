@@ -6,7 +6,7 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 18:48:57 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/13 18:49:17 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/14 12:36:28 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,12 @@ int	ft_checks1(char *str)
 	int	i;
 
 	i = 0;
+	if (str[0] == '\0')
+		return (0);
 	if (str[i] == '-' || str[i] == '+')
 		i++;
+	if (str[i] < '0' || str[i] > '9')
+		return (0);
 	while (str[i] != '\0')
 	{
 		if (ft_isdigit(str[i]) == 0)
@@ -98,6 +102,18 @@ int	ft_clean_and_create_stack_from_nargs(int argc,
 int	ft_clean_and_create_stack_from_string(char **argv, t_pos *moves,
 		t_stack **stack_a)
 {
+	int	flag_only_spaces;
+
+	flag_only_spaces = 1;
+	moves->i = 0;
+	while (argv[1][moves->i] != '\0')
+	{
+		if (argv[1][moves->i] != ' ')
+			flag_only_spaces = 0;
+		moves->i++;
+	}
+	if (flag_only_spaces == 1)
+		return (0);
 	moves->each_value = ft_split(argv[1], ' ');
 		moves->max_index = ft_wordcount(argv[1], ' ') - 1;
 		moves->max_stack_size = ft_wordcount(argv[1], ' ');

@@ -6,7 +6,7 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:54:38 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/13 19:00:20 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/14 16:25:59 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,5 +162,15 @@ void	ft_best_solution_back(t_stack *head_a, t_stack *head_b, t_pos *moves);
 void	ft_init_moves(t_pos *moves);
 /*print int array*/
 void	ft_print_int_array(int *array, int amount);
+
+/*checker*/
+/*push no print*/
+void	ft_push_only(t_stack **head_push, t_stack **head_to_push);
+/*swap in a and swap in b*/
+void	ft_ss(t_stack **head_a, t_stack **head_b);
+/*swap no print*/
+void	ft_swap_only(t_stack **head);
+int		ft_check_inputs(char *lines);
+void	ft_use_commands(char *lines, t_stack **stack_a, t_stack **stack_b);
 
 #endif

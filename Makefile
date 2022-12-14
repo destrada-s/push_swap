@@ -6,7 +6,7 @@
 #    By: destrada <destrada@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 10:57:35 by destrada          #+#    #+#              #
-#    Updated: 2022/12/13 20:30:12 by destrada         ###   ########.fr        #
+#    Updated: 2022/12/14 16:35:59 by destrada         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRCS_BONUS =	utils_command_stack.c \
 				utils_lists_others.c \
 				utils_linked_lists.c \
 				utils_checks.c \
-				checker.c 
+				checker.c \
+				utils_checker_bonus.c
 				
 
 OBJS = $(SRCS:.c=.o)
@@ -65,12 +66,12 @@ bonus:	$(OBJS_BONUS)
 	$(CC) -o $(NAME_BONUS) $(OBJS_BONUS) $(LIBFT)
 
 clean:
-	$(RM) $(OBJS) 
+	$(RM) $(OBJS) $(OBJS_BONUS) 
 	@make clean -C $(LIB_DIR)
 
 fclean: clean
 		@make fclean -C $(LIB_DIR)
-		$(RM) $(NAME) 
+		$(RM) $(NAME) $(NAME_BONUS)
 		$(RM) $(LIBFT)
 		
 

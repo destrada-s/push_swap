@@ -6,7 +6,7 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 20:06:09 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/13 20:40:58 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/14 16:27:45 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,18 @@ int	ft_check_and_create_stack_from_nargs(int argc,
 int	ft_check_create_stack_from_string(char **argv, t_pos *moves,
 		t_stack **stack_a)
 {
+	int	flag_only_spaces;
+
+	flag_only_spaces = 1;
+	moves->i = 0;
+	while (argv[1][moves->i] != '\0')
+	{
+		if (argv[1][moves->i] != ' ')
+			flag_only_spaces = 0;
+		moves->i++;
+	}
+	if (flag_only_spaces == 1)
+		return (0);
 	moves->each_value = ft_split(argv[1], ' ');
 		moves->max_index = ft_wordcount(argv[1], ' ') - 1;
 		moves->max_stack_size = ft_wordcount(argv[1], ' ');
@@ -76,12 +88,13 @@ void	ft_init_moves(t_pos *moves)
 int	main(int argc, char **argv)
 {
 	t_stack		*stack_a;
-	//t_stack	*stack_b;
+	t_stack		*stack_b;
 	char		*lines;
 	t_pos		moves;
 
 	stack_a = NULL;
-	//stack_b = NULL;
+	stack_b = NULL;
+	lines = NULL;
 	ft_init_moves(&moves);
 	if (argc == 2)
 		if (ft_clean_and_create_stack_from_string(argv,
@@ -91,7 +104,18 @@ int	main(int argc, char **argv)
 		if (ft_clean_and_create_stack_from_nargs(argc,
 				argv, &moves, &stack_a) == 0)
 			return (ft_putstr_fd("Error\n", 2), 255);
-	lines = get_next_line(0);
-	ft_printf("%s", lines);
+	while (0 == 0)
+	{
+		lines = get_next_line(0);
+		if (!lines)
+			break ;
+		if (ft_check_inputs(lines) == 0)
+			return (ft_putstr_fd("Error, please only use available commands to move the stack!\n", 2), 255);
+		ft_use_commands(lines, &stack_a, &stack_b);
+	}
+	if (list_is_empty(stack_b) == 1 && ft_check_lowest_to_highest(&stack_a) == 1)
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
 	return (0);
 }
