@@ -6,7 +6,7 @@
 #    By: destrada <destrada@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 10:57:35 by destrada          #+#    #+#              #
-#    Updated: 2022/12/14 16:35:59 by destrada         ###   ########.fr        #
+#    Updated: 2022/12/15 20:23:09 by destrada         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRCS =	main.c \
 		utils_sort_algorithm.c \
 		general_algorithm.c \
 		utils_checks.c \
-		utils_calculations.c
+		utils_more.c \
+		utils_calculations.c 
 
 SRCS_BONUS =	utils_command_stack.c \
 				utils_command_stack2.c \
@@ -30,6 +31,7 @@ SRCS_BONUS =	utils_command_stack.c \
 				utils_linked_lists.c \
 				utils_checks.c \
 				checker.c \
+				utils_more.c \
 				utils_checker_bonus.c
 				
 
@@ -53,15 +55,16 @@ NAME = push_swap
 
 NAME_BONUS = checker
 
-all: $(NAME)
+all: libft $(NAME)
 
 $(NAME): $(OBJS)
-	@make -C $(LIB_DIR)
 	@cp $(LIB_DIR)$(LIBFT) .
 	$(CC) -o $(NAME) $(OBJS) $(LIBFT)
 
-bonus:	$(OBJS_BONUS)
+libft:
 	@make -C $(LIB_DIR)
+
+bonus: libft $(OBJS_BONUS)
 	@cp $(LIB_DIR)$(LIBFT) .
 	$(CC) -o $(NAME_BONUS) $(OBJS_BONUS) $(LIBFT)
 

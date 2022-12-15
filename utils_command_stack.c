@@ -6,7 +6,7 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:17:54 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/14 16:15:40 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/15 19:43:09 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_rotate(t_stack **head)
 	t_stack	*tmp;
 	t_stack	*last;
 
-	if (!head)
+	if (!(*head))
 		return ;
 	tmp = (*head)->next;
 	last = ft_last_in_list(*head);
@@ -62,6 +62,8 @@ void	ft_reverse_rotate(t_stack **head)
 	t_stack	*tmp;
 	t_stack	*nd2tolast;
 
+	if (!(*head))
+		return ;
 	nd2tolast = ft_2nlast_in_list(*head);
 	tmp = ft_last_in_list(*head);
 	tmp->next = *head;

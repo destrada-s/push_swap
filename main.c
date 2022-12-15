@@ -6,11 +6,16 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 20:22:30 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/14 12:21:29 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/15 17:59:48 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_leaks(void)
+{
+	system("leaks -q push_swap");
+}
 
 int	main(int argc, char **argv)
 {
@@ -35,5 +40,5 @@ int	main(int argc, char **argv)
 		sort_list_5(&stack_a, &stack_b, moves);
 	else
 		sort_list_general_2(&stack_a, &stack_b, moves);
-	return (0);
+	return (ft_stackclear(&stack_a), 0);
 }

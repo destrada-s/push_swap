@@ -6,26 +6,25 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 18:38:32 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/13 18:43:21 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/15 17:09:13 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	t_best	ft_init_calculate_best_move(t_best calculate,
+static	void	ft_init_calculate_best_move(t_best *calculate,
 		t_stack *head_a, t_stack *head_b)
 {
-	calculate.i = 0;
-	calculate.cmp = 0;
-	calculate.last = ft_last_in_list_pos(head_b);
-	calculate.last_a = ft_last_in_list_pos(head_a);
-	calculate.new = 0;
-	calculate.new_close = 0;
-	calculate.i_close = 0;
-	calculate.new_rev_close = 0;
-	calculate.i_rev_close = 0;
-	calculate.cmp_new = 0;
-	return (calculate);
+	calculate->i = 0;
+	calculate->cmp = 0;
+	calculate->last = ft_last_in_list_pos(head_b);
+	calculate->last_a = ft_last_in_list_pos(head_a);
+	calculate->new = 0;
+	calculate->new_close = 0;
+	calculate->i_close = 0;
+	calculate->new_rev_close = 0;
+	calculate->i_rev_close = 0;
+	calculate->cmp_new = 0;
 }
 
 static	void	ft_most_important(t_best *calculate, t_pos *moves)
@@ -83,7 +82,7 @@ void	ft_best_solution_back(t_stack *head_a, t_stack *head_b, t_pos *moves)
 	t_best	calculate;
 
 	moves->send_to_b_pos = -1;
-	calculate = ft_init_calculate_best_move(calculate, head_a, head_b);
+	ft_init_calculate_best_move(&calculate, head_a, head_b);
 	while (head_b != NULL)
 	{
 		calculate.new = adjacent_to_head_b(head_a, head_b, moves);

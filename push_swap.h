@@ -6,7 +6,7 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:54:38 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/14 16:25:59 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/15 20:16:58 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,10 @@ void	ft_reverse_rotate_stack(t_stack **head, char stack);
 void	ft_rr(t_stack **head_a, t_stack **head_b);
 /*move down the list and puts last as first for both lists*/
 void	ft_rrr(t_stack **head_a, t_stack **head_b);
+/*rr no print*/
+void	ft_rr_only(t_stack **head_a, t_stack **head_b);
+/*rrr no print*/
+void	ft_rrr_only(t_stack **head_a, t_stack **head_b);
 
 /*add actual_position and discover index - pos info && order*/
 
@@ -158,6 +162,8 @@ void	ft_best_solution_back(t_stack *head_a, t_stack *head_b, t_pos *moves);
 
 /*more utils*/
 
+/*free nodes*/
+void	ft_stackclear(t_stack	**lst);
 /*init struct*/
 void	ft_init_moves(t_pos *moves);
 /*print int array*/
@@ -171,6 +177,8 @@ void	ft_ss(t_stack **head_a, t_stack **head_b);
 /*swap no print*/
 void	ft_swap_only(t_stack **head);
 int		ft_check_inputs(char *lines);
+int		ft_check_only_spaces(t_pos *moves, char *str);
+void	ft_create_array_to_order(t_pos *moves);
 void	ft_use_commands(char *lines, t_stack **stack_a, t_stack **stack_b);
 
 #endif

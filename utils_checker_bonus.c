@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_command_stack_bonus.c                        :+:      :+:    :+:   */
+/*   utils_checker_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:10:54 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/14 16:25:10 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/15 19:39:39 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_swap_only(t_stack **head)
 {
 	t_stack	*tmp;
 
+	if (!(*head))
+		return ;
 	tmp = *head;
 	tmp = tmp->next;
 	(*head)->next = tmp->next;
@@ -33,6 +35,8 @@ void	ft_push_only(t_stack **head_push, t_stack **head_to_push)
 {
 	t_stack	*send;
 
+	if (!(*head_push))
+		return ;
 	send = (*head_push);
 	(*head_push) = (*head_push)->next;
 	send->next = *head_to_push;
@@ -71,13 +75,13 @@ void	ft_use_commands(char *lines, t_stack **stack_a, t_stack **stack_b)
 	else if (ft_strncmp(lines, "rb\n", 3) == 0)
 		ft_rotate(stack_b);
 	else if (ft_strncmp(lines, "rr\n", 3) == 0)
-		ft_rr(stack_a, stack_b);
+		ft_rr_only(stack_a, stack_b);
 	else if (ft_strncmp(lines, "rra\n", 4) == 0)
 		ft_reverse_rotate(stack_a);
 	else if (ft_strncmp(lines, "rrb\n", 4) == 0)
 		ft_reverse_rotate(stack_b);
 	else if (ft_strncmp(lines, "rrr\n", 4) == 0)
-		ft_rrr(stack_a, stack_b);
+		ft_rrr_only(stack_a, stack_b);
 	else if (ft_strncmp(lines, "pb\n", 3) == 0)
 		ft_push_only(stack_a, stack_b);
 	else if (ft_strncmp(lines, "pa\n", 3) == 0)

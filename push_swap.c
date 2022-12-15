@@ -6,33 +6,11 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:05:38 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/13 20:23:00 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/15 18:18:21 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-//ASK TOMORROW TO LOOK FOR LEAKS QUE NO SABES
-void	ft_leaks(void)
-{
-	system("leaks -q push_swap");
-}
-
-void	ft_stackclear(t_list **stack)
-{
-	t_list	*header;
-	t_list	*nextdel;
-
-	header = *stack;
-	while (header)
-	{
-		nextdel = header -> next;
-		free(header -> content);
-		free(header);
-		header = nextdel;
-	}
-	*stack = NULL;
-}
 
 /*part of algortitm*/
 void	ft_send_higher_to_lower(t_stack **head_a,

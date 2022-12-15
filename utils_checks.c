@@ -6,7 +6,7 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 18:48:57 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/14 12:36:28 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/15 20:45:59 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,17 +102,7 @@ int	ft_clean_and_create_stack_from_nargs(int argc,
 int	ft_clean_and_create_stack_from_string(char **argv, t_pos *moves,
 		t_stack **stack_a)
 {
-	int	flag_only_spaces;
-
-	flag_only_spaces = 1;
-	moves->i = 0;
-	while (argv[1][moves->i] != '\0')
-	{
-		if (argv[1][moves->i] != ' ')
-			flag_only_spaces = 0;
-		moves->i++;
-	}
-	if (flag_only_spaces == 1)
+	if (ft_check_only_spaces(moves, argv[1]) == 1)
 		return (0);
 	moves->each_value = ft_split(argv[1], ' ');
 		moves->max_index = ft_wordcount(argv[1], ' ') - 1;
@@ -128,12 +118,6 @@ int	ft_clean_and_create_stack_from_string(char **argv, t_pos *moves,
 	}
 	if (ft_list_duplicates(*stack_a) == 1)
 		return (0);
-	moves->array = (int *)ft_calloc(moves->max_index + 1, sizeof(int));
-	moves->i = 0;
-	while (moves->i < moves->max_index + 1)
-	{
-		moves->array[moves->i] = ft_atoi(moves->each_value[moves->i]);
-		moves->i++;
-	}
+	ft_create_array_to_order(moves);
 	return (1);
 }
