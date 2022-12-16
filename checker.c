@@ -6,7 +6,7 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 20:06:09 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/15 20:47:14 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:38:48 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,22 @@ void	ft_init_moves(t_pos *moves)
 	moves->send_to_b_pos = 0;
 	moves->stack_middle = 0;
 	moves->stack_size = 0;
-	moves->diff = 0;
-	moves->least_diff = 0;
-	moves->pos2 = 0;
 	moves->neg_flag = 0;
 	moves->tmp = NULL;
+}
+
+int	ft_doloop_for_inputs(char *lines, t_stack **stack_a, t_stack **stack_b)
+{
+	while (0 == 0)
+	{
+		lines = get_next_line(0);
+		if (!lines)
+			break ;
+		if (ft_check_inputs(lines) == 0)
+			return (0);
+		ft_use_commands(lines, stack_a, stack_b);
+	}
+	return (1);
 }
 
 int	main(int argc, char **argv)
@@ -94,15 +105,8 @@ int	main(int argc, char **argv)
 		if (ft_clean_and_create_stack_from_nargs(argc,
 				argv, &moves, &stack_a) == 0)
 			return (ft_putstr_fd("Error\n", 2), 255);
-	while (0 == 0)
-	{
-		lines = get_next_line(0);
-		if (!lines)
-			break ;
-		if (ft_check_inputs(lines) == 0)
-			return (ft_putstr_fd("Error\n", 2), 255);
-		ft_use_commands(lines, &stack_a, &stack_b);
-	}
+	if (ft_doloop_for_inputs(lines, &stack_a, &stack_b) == 0)
+		return (ft_putstr_fd("Error\n", 2), 255);
 	if (list_is_empty(stack_b) == 1
 		&& ft_check_lowest_to_highest(&stack_a) == 1)
 		ft_printf("OK\n");

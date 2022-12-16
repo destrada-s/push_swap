@@ -6,7 +6,7 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:05:38 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/15 18:18:21 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/16 14:09:29 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	ft_send_higher_to_lower(t_stack **head_a,
 			{
 				if ((*head_a)->index < ((moves->max_index + 1) / 2))
 					ft_push(head_a, head_b, 'b');
+				else if ((*head_a)->next->index < ((moves->max_index + 1) / 2))
+					ft_rotate_stack(head_a, 'a');
 				else
 					ft_rotate_stack(head_a, 'a');
 			}
@@ -49,9 +51,6 @@ void	ft_init_moves(t_pos *moves)
 	moves->send_to_b_pos = 0;
 	moves->stack_middle = 0;
 	moves->stack_size = 0;
-	moves->diff = 0;
-	moves->least_diff = 0;
-	moves->pos2 = 0;
 	moves->neg_flag = 0;
 	moves->tmp = NULL;
 }

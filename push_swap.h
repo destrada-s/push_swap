@@ -6,7 +6,7 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:54:38 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/15 20:16:58 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/16 14:12:33 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ typedef struct s_pos
 	int		i;
 	int		*array;
 	char	**each_value;
-	int		least_diff;
-	int		diff;
-	int		pos2;
 	int		neg_flag;
 	t_stack	*tmp;
 }	t_pos;
@@ -170,6 +167,8 @@ void	ft_init_moves(t_pos *moves);
 void	ft_print_int_array(int *array, int amount);
 
 /*checker*/
+
+int		ft_doloop_for_inputs(char *lines, t_stack **stack_a, t_stack **stack_b);
 /*push no print*/
 void	ft_push_only(t_stack **head_push, t_stack **head_to_push);
 /*swap in a and swap in b*/
