@@ -6,7 +6,7 @@
 #    By: destrada <destrada@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 17:12:02 by destrada          #+#    #+#              #
-#    Updated: 2022/12/07 09:24:55 by destrada         ###   ########.fr        #
+#    Updated: 2022/12/19 21:50:26 by destrada         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ SRCS =	ft_isalpha.c \
 		printf_len_utils.c \
 		printf_prints_utils.c \
 		get_next_line_bonus.c \
-		ft_check_atoil.c
+		ft_check_atoil.c \
+		ft_free_utils_and_others.c
 		
 SRCS_BONUS =	ft_lstnew_bonus.c \
 				ft_lstadd_front_bonus.c \

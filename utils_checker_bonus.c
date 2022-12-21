@@ -6,7 +6,7 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:10:54 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/15 19:39:39 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/19 18:19:33 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_swap_only(t_stack **head)
 {
 	t_stack	*tmp;
 
-	if (!(*head))
+	if (!(*head) || !((*head)->next))
 		return ;
 	tmp = *head;
 	tmp = tmp->next;

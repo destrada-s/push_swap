@@ -6,7 +6,7 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 11:21:45 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/07 17:07:43 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:32:45 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,5 +165,7 @@ int		ft_check_atoil(char *str);
 long	ft_long_nbrlen(long nbr);
 void	ft_zero_left(char *str, int *pt_i);
 int		ft_wordcount(char const *s, char c);
+char	**ft_free_doublechar(char **split);
+void	ft_leaks(void);
 
 #endif

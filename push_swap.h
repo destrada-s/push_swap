@@ -6,7 +6,7 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:54:38 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/16 14:12:33 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/19 18:22:49 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ typedef struct s_pos
 	int		best_in_b_closer_last;
 	int		cmp;
 	int		i;
+	int		least_diff;
+	int		diff;
+	int		pos2;
 	int		*array;
 	char	**each_value;
 	int		neg_flag;

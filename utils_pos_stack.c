@@ -6,7 +6,7 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:54:52 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/13 18:37:35 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/19 20:39:14 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ t_pos	allocate_index(t_stack **head, t_pos moves, int amount)
 	}
 	moves.max_index = i - 1;
 	actualize_pos(head);
-	free (moves.array);
 	return (moves);
 }
 

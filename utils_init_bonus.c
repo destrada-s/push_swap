@@ -1,39 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   utils_init_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 11:05:38 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/19 18:24:04 by destrada         ###   ########.fr       */
+/*   Created: 2022/12/21 15:51:28 by destrada          #+#    #+#             */
+/*   Updated: 2022/12/21 15:56:34 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*part of algortitm*/
-void	ft_send_higher_to_lower(t_stack **head_a,
-		t_stack **head_b, t_pos *moves)
-{
-	if (ft_check_ordered(head_a) != 1)
-	{
-		while (ft_last_in_list_pos(*head_a) != 2)
-		{
-			while (ft_last_in_list_pos(*head_a) > (moves->max_index + 1) / 2)
-			{
-				if ((*head_a)->index < ((moves->max_index + 1) / 2))
-					ft_push(head_a, head_b, 'b');
-				else if ((*head_a)->next->index < ((moves->max_index + 1) / 2))
-					ft_rotate_stack(head_a, 'a');
-				else
-					ft_rotate_stack(head_a, 'a');
-			}
-			ft_push(head_a, head_b, 'b');
-		}
-		sort_list_3(head_a);
-	}
-}
 
 void	ft_init_moves(t_pos *moves)
 {
@@ -57,7 +34,3 @@ void	ft_init_moves(t_pos *moves)
 	moves->neg_flag = 0;
 	moves->tmp = NULL;
 }
-
-//still need to check if string is NULL to give error
-//check leaks
-//do checker

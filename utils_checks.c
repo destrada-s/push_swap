@@ -6,7 +6,7 @@
 /*   By: destrada <destrada@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 18:48:57 by destrada          #+#    #+#             */
-/*   Updated: 2022/12/15 20:45:59 by destrada         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:00:41 by destrada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,13 +111,13 @@ int	ft_clean_and_create_stack_from_string(char **argv, t_pos *moves,
 	while (moves->i >= 0)
 	{
 		if (ft_checks1(moves->each_value[moves->i]) == 0)
-			return (0);
+			return (ft_free_doublechar(moves->each_value), 0);
 		ft_insert_in_stack(stack_a,
 			ft_atoi(moves->each_value[moves->i]));
 		moves->i--;
 	}
 	if (ft_list_duplicates(*stack_a) == 1)
-		return (0);
+		return (ft_free_doublechar(moves->each_value), 0);
 	ft_create_array_to_order(moves);
 	return (1);
 }

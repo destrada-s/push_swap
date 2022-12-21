@@ -6,7 +6,7 @@
 #    By: destrada <destrada@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 10:57:35 by destrada          #+#    #+#              #
-#    Updated: 2022/12/15 20:23:09 by destrada         ###   ########.fr        #
+#    Updated: 2022/12/21 15:53:15 by destrada         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS_BONUS =	utils_command_stack.c \
 				utils_checks.c \
 				checker.c \
 				utils_more.c \
+				utils_init_bonus.c \
 				utils_checker_bonus.c
 				
 
@@ -64,10 +65,11 @@ $(NAME): $(OBJS)
 libft:
 	@make -C $(LIB_DIR)
 
-bonus: libft $(OBJS_BONUS)
+bonus: libft $(NAME_BONUS) 
+
+$(NAME_BONUS): $(OBJS_BONUS)
 	@cp $(LIB_DIR)$(LIBFT) .
 	$(CC) -o $(NAME_BONUS) $(OBJS_BONUS) $(LIBFT)
-
 clean:
 	$(RM) $(OBJS) $(OBJS_BONUS) 
 	@make clean -C $(LIB_DIR)
